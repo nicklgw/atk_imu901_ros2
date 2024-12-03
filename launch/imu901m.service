@@ -1,0 +1,15 @@
+[Unit]
+Description=ATK-IMU901 ros2 driver for 2.5M-ZhengPing Robot
+After=network.target
+
+[Service]
+Type=simple
+User=orangepi
+ExecStart=/usr/bin/bash /opt/ros/humble/share/ros2_imu/launch/imu901m.sh
+ExecStop=/usr/bin/killall -INT ros2_imu_node
+KillSignal=SIGINT
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
